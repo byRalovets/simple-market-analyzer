@@ -24,6 +24,9 @@ class Symbols:
 
     @staticmethod
     def extract_symbol_info(symbol: str) -> object:
+        if symbol is None or symbol == "":
+            raise KeyError(f"symbol is {symbol}")
+
         params = {"symbol": symbol}
         response = requests.get(URL.SYMBOL_STATS_URL, params=params)
 
